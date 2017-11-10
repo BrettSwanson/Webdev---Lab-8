@@ -4,8 +4,15 @@
      return true or output an error message, disconnect, and exit
    */
   function insert_question($id, $desc, $points) {
-
-    /* to be completed */
+	 global $db;
+    try {
+		$query = "INSERT INTO Questions VALUES (?,?,?)";
+		$stmt = $db->prepare($query);
+		return $stmt->execute([$id, $desc, $points]);  
+    } catch (PDOException $e) {
+		db_disconnect();
+		exit("Error when inserting");    
+    }
 
   }
 
@@ -16,9 +23,17 @@
       wrong
    */
   function retrieve_question($id) {
-
-    /* to be completed */
-
+	 global $db;
+    
+    try {
+		$query = "SELECT * FROM Questions WHERE ID = " . $id . ";";
+		$stmt = $db->prepare($query);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);    
+    } catch (PDOException $e) {
+		db_disconnect();
+		exit("Error Listing");    
+    }
   }
 
 ?>

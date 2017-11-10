@@ -4,7 +4,9 @@
 
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // this is a POST request and thus a form submission: process the form data
-
+		$query_result = retrieve_question($_POST['ID']);
+		echo "<p> $query_result </p>";
+		db_disconnect();
     /* to be completed:
        1) retrieve the question based on the form data
        2) disconnect from the database
@@ -12,7 +14,10 @@
 
   } else {
     // this is a GET request: no form data to process
-
+	
+	$_POST['ID'] = null;
+	$_POST['desc'] = null;
+	$_POST['points'] = null;
     /* to be completed:
        null out the question to be used below
     */

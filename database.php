@@ -7,15 +7,25 @@
    */
   function db_connect() {
 
-    // to be completed
-
+   try {
+   	$dbh = new PDO("mysql:dbname=" . DB_NAME . ";host=" . DB_SERVER, 
+   						DB_USER, DB_PWD, 
+   						array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+   } catch (PDOException $e) {
+	  echo "failure to connect";
+	  exit();   
+   }
+   return $dbh;
   }
 
   /* disconnect from the database, if needed
    */
   function db_disconnect() {
 
-    // to be completed
+    global $db;
+    if (isset($db)) {
+		$db=null;    
+    }
 
   }
 

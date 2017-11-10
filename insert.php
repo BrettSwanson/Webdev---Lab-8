@@ -5,12 +5,19 @@
   if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // this is a POST request and thus a form submission: process the form data
 
+   if (insert_question($_POST['ID'], $_POST['desc'], $_POST['points'])) {
+		echo "<p> Question was inserted correctly</p>";   
+   }
+   else {
+		echo "<p> There was an error inserting the question</p>";   
+   }
+    db_disconnect();
+     
     /* to be completed:
        1) insert the new question based on the form data
        2) output message confirming the new question was inserted
        3) disconnect from the database
      */
-     
   }
 
 ?>

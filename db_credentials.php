@@ -1,8 +1,8 @@
 <?php
 
 define("DB_SERVER", "localhost");
-define("DB_USER", "your username" );
-define("DB_PWD", "your MySQL password");
-define("DB_NAME", "your username");
+define("DB_USER", "swansb31" );
+define("DB_PWD", "hunterdogy7");
+define("DB_NAME", "swansb31");
 
 ?>
